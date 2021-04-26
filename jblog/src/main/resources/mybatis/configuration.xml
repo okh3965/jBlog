@@ -6,9 +6,23 @@
 <configuration>
 	<!-- parameterType, resultType에서 사용하는 객체에는 별칭을 지어줄 수 있다. -->
 	<typeAliases>
+		<typeAlias alias="userVo"
+			type="com.bitacademy.jblog.vo.UserVo" />
+		<typeAlias alias="blogVo"
+			type="com.bitacademy.jblog.vo.BlogVo" />
+		<typeAlias alias="cateVo"
+			type="com.bitacademy.jblog.vo.CateVo" />
+		<typeAlias alias="postVo"
+			type="com.bitacademy.jblog.vo.PostVo" />		
 		
 	</typeAliases>
 	<mappers>
+	
+		<mapper resource="mybatis/mappers/users.xml" />
+		<mapper resource="mybatis/mappers/blog.xml" />
+		<mapper resource="mybatis/mappers/category.xml" />
+		<mapper resource="mybatis/mappers/post.xml" />
 		
+						
 	</mappers>
 </configuration>

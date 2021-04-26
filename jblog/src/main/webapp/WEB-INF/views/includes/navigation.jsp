@@ -4,8 +4,8 @@
 	prefix="c" %>
 	<div id="navigation">
 		<ul>
-			<li><a href="<c:url value="/" />">Home</a></li>
-			<li><a href="<c:url value="/guestbook" />">방명록</a></li>
-			<li><a href="<c:url value="/board" />">게시판</a></li>
+			<li><a href="<c:url value="/${authUser.id }/admin/basic" />">기본설정</a></li>
+			<li><a href="<c:url value="/${authUser.id }/admin/category" />">카테고리</a></li>
+			<li><a href="<c:url value="/${authUser.id }/admin/write" />">글작성</a></li>
 		</ul>
 	</div>

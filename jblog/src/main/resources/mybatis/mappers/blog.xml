@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="blog">
+		
+	<!-- 기본설정 보기 -->
+	<select id="getContent" parameterType="long" resultType="blogVo">
+	<![CDATA[
+	SELECT userNo, blogTitle, logoFile
+	FROM blog
+	WHERE userNo = #{value}
+	]]>
+	</select>
+		
+	<select id="getContentById" parameterType="string" resultType="blogVo">
+	<![CDATA[
+	SELECT b.userNo, b.blogTitle, b.logoFile, u.id
+	FROM blog b, users u	
+	WHERE u.userNo = b.userNo AND id = #{id}
+	]]>			
+	</select>
+		
+	<!-- 기본설정 삽입 쿼리 -->
+	<insert id="insert" parameterType="blogVo">
+	<![CDATA[
+	INSERT INTO blog
+	(userNo, blogTitle, logoFile)
+	VALUES
+	((SELECT MAX(userNo) FROM users), 
+	#{blogTitle}, 
+	#{logoFile})	
+	]]>
+	
+	</insert>
+		
+	<!-- 기본설정 Update 쿼리 -->
+	<update id="update" parameterType="blogVo">
+	<![CDATA[
+	UPDATE blog
+	SET blogTitle=#{blogTitle}, logoFile=#{logoFile}
+	WHERE userNo = #{userNo}
+	]]>
+	</update>
+	
+</mapper>
